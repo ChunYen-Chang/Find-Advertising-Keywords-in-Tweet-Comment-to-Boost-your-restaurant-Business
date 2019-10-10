@@ -33,11 +33,12 @@ class MyStreamListener(tweepy.StreamListener):
                 'id_str': status.id_str,
                 'text': status.text,
                 'received_at': datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S"),
-                'place': str(status.place),
             }
             
+			tweet_content = tweet_item['id_str'] + '|||||' + tweet_item['text'] + '|||||' + tweet_item['received_at']
+			
             # send data to Kafka broker
-            producer.send('restaurant', tweet_item['text'].encode('utf-8'))
+            producer.send('restaurant', tweet_content.encode('utf-8'))
 
 
 
@@ -46,5 +47,5 @@ stream_listener = MyStreamListener()
 stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
 
 
-# filter the Tweet text, only exteact the text which contains two key words--"melbourne, restaurant" 
-stream.filter(languages=['en'], track=['melbourne', 'restaurant'])
+# filter the Tweet text, only exteact the text which contains two key words--"restaurant" 
+stream.filter(languages=['en'], track=['restaurant'])
