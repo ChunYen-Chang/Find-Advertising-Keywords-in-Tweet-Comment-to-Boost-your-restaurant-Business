@@ -10,8 +10,8 @@ Suppose that you are a manager of one restaurant and you are eager for finding a
 first idea comes to your mind is posting advertisements on some online forums such as Facebook, Twitter, or Plurk. However, it is hard to find 
 what kind of text content you sould put in your advertisement to catch people's eyes to make them have the motivation to go to your restaurant. 
 If you are struggling with this issue, this project might be helpful for you. Generally speaking, this project will collect a lot of restaurant comments 
-from Twitter, separate these comments into good comments and bad comments, and save these good and bad comments in separated table in a database. 
-After creating these two tables in a database, the restaurant manager can conduct much deeper analysis such as NLP to find what kind of word is frequently 
+from Twitter, separate these comments into good comments and bad comments, and save these good and bad comments in a table in a database. 
+After creating the table in a database, the restaurant manager can conduct much deeper analysis such as NLP to find what kind of word is frequently 
 used in good comments and which word is usually used in bad comment. Then, when this restaurant manager tries to write down the restaurant advertisement 
 content , he knows which word sould be used (the word coming from good comments) and which word should avoid to use (the word from bad comments).
 
@@ -32,7 +32,7 @@ send all this data to Kafka cluster. After the Kafka cluster receives the data, 
 and wait for other consumers to consume the data. Then, the AWS EMR cluster (Spark cluster) will send the message to the Kafka broker to 
 ask the kafka cluster send the data stored in "restaurant topic". The Spark cluster receives the data, has data wrangling processes, conducts 
 a basic sentiment analysis on the data(restaurant's comments), seperates data into two categories(good restaurant comments and bad restaurant 
-commnets) based on the previous sentiment analysis, and store these two categories into different tables in a database. After this, we create 
+commnets) based on the previous sentiment analysis, and store these two categories into a table in a database. After this, we create 
 a RESTful API by using flask for users (which might be restaurant managers), users can use the HTTP request to interact with the server and get
 the restaurant comments' data.  
 
