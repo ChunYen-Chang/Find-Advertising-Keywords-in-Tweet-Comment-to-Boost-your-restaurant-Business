@@ -21,7 +21,7 @@ api = tweepy.API(auth)
 
 
 # instantiate a Kafka producer
-producer = KafkaProducer(bootstrap_servers=['34.220.224.170:9092'])
+producer = KafkaProducer(bootstrap_servers=['<your kafka broker IP address>:<your kafka broker port, default is 9092>'])
 
 
 # define a class for receiving the streaming data from Tweet API
@@ -41,11 +41,10 @@ class MyStreamListener(tweepy.StreamListener):
             producer.send('restaurant', tweet_content.encode('utf-8'))
 
 
+if __name__ == '__main__':
+	# start to receive data from tweet and send to Kafka cluster
+	stream_listener = MyStreamListener()
+	stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
 
-# start to receive data from tweet and send to Kafka cluster
-stream_listener = MyStreamListener()
-stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-
-
-# filter the Tweet text, only exteact the text which contains two key words--"restaurant" 
-stream.filter(languages=['en'], track=['restaurant'])
+	# filter the Tweet text, only exteact the text which contains two key words--"restaurant" 
+	stream.filter(languages=['en'], track=['restaurant'])
