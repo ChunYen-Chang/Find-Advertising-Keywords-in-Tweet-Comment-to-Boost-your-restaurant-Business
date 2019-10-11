@@ -113,15 +113,16 @@ to create a restaurant topic in the Kafka cluster.
 1. For this part, please check the instruction documentation in *Amazon_EMR_setting_instruction folder*  
 2. After creating the AWS EMR cluster, please access to the master node in this cluster.
 3. Copy **streaming folder** to this EC2 instance  
-4. Type `sudo python3 streaming_from_kafka_to_sprak_to_mysql.py` in your terminal to start the process of extracting data from Kafka custer 
+4. Type `spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.2.0 --jars /usr/lib/spark/jars/spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar,/home/hadoop/mysql-connector-java-8.0.17.jar streaming_from_kafka_to_sprak_to_mysql.py` in your terminal to start the process of extracting data from Kafka custer 
 , have data wrangling process, and store result in a MySql database.
-4. Type `sudo python3 server.py` in your terminal to start the Falsk Web server 
+
 
 **PART FOUR: BUILD A RESTful API**  
 1. Access to the EC2 instance.  
-2. Copy the code in "code/flaskserver_part folder"  
-3. Type `sudo python3 server.py` in your terminal to start the Falsk Web server  
-4. Install the MySql database
+2. Install the MySql database
+3. Copy the code in "code/flaskserver_part folder"  
+4. Type `sudo python3 server.py` in your terminal to start the Falsk Web server  
+
 
 **PART FIFTH: BUILD TWEETING EXTRACTION SERVER**  
 1. Access to the EC2 instance.  
