@@ -3,7 +3,7 @@
 </p>
   
   
-# Finding Keywords in Tweet Comment to Boost your restaurant Business-Using Kafka and Spark Streaming
+# Finding Keywords in Tweet Comment to Boost your restaurant Business
 
 #### *PROJECT BACKGROUND and DESCRIPTION*
 Suppose that you are a manager of one restaurant and you are eager for finding a way to attract more customers, what will you do? I believe the 
