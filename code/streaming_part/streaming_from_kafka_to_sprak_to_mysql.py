@@ -8,11 +8,8 @@ from textblob import TextBlob
 # define a function
 def convert_to_dataframe_and_save_to_mysql(rdd):
 	'''
-	Description: This function helps users to convert RDD to dataframe and save the dataframe 
-				 in a MySql database
-				
+	Description: This function helps users to convert RDD to dataframe and save the dataframe in a MySql database				
 	Parameters: rdd
-	
 	Returns: rdd
 	'''
     if not rdd.isEmpty():
